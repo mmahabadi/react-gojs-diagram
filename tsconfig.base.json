@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@store": ["store/src/index.ts"],
       "@ui-kit": ["ui-kit/src/index.ts"]
     }
   },

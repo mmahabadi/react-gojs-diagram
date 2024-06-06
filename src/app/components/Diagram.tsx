@@ -1,23 +1,25 @@
 import React, { FC, useCallback, useEffect, useRef } from 'react';
 import { ReactDiagram } from 'gojs-react';
-import { Link, Node } from '../types';
 import { DiagramBuilder } from '../services/DiagramBuilder';
+import {
+  selectLinks,
+  selectNodes,
+  saveChanges,
+  useAppDispatch,
+  useAppSelector,
+  selectSelectedNodeKey,
+} from '@store';
 
-type proptypes = {
-  nodes: Node[];
-  links: Link[];
-  selectedNodeKey: string | null;
-  onChange: () => void;
-};
-
-const Diagram: FC<proptypes> = ({
-  nodes,
-  links,
-  selectedNodeKey,
-  onChange,
-}) => {
+const Diagram: FC = () => {
   const diagramRef: React.RefObject<ReactDiagram> = useRef(null);
-  console.log('Diagram rendered');
+  const dispatch = useAppDispatch();
+  const nodes = useAppSelector(selectNodes);
+  const links = useAppSelector(selectLinks);
+  const selectedNodeKey = useAppSelector(selectSelectedNodeKey);
+
+  const handleChange = useCallback(() => {
+    dispatch(saveChanges());
+  }, [dispatch]);
 
   useEffect(() => {
     const diagram = diagramRef.current?.getDiagram();
@@ -25,9 +27,9 @@ const Diagram: FC<proptypes> = ({
       return;
     }
     if (diagram) {
-      diagram.addDiagramListener('SelectionMoved', onChange);
-      diagram.addDiagramListener('PartResized', onChange);
-      diagram.addDiagramListener('TextEdited', onChange);
+      diagram.addDiagramListener('SelectionMoved', handleChange);
+      diagram.addDiagramListener('PartResized', handleChange);
+      diagram.addDiagramListener('TextEdited', handleChange);
 
       if (selectedNodeKey) {
         const node = diagram.findNodeForKey(selectedNodeKey);
@@ -39,12 +41,12 @@ const Diagram: FC<proptypes> = ({
 
     return () => {
       if (diagram) {
-        diagram.removeDiagramListener('SelectionMoved', onChange);
-        diagram.removeDiagramListener('PartResized', onChange);
-        diagram.removeDiagramListener('TextEdited', onChange);
+        diagram.removeDiagramListener('SelectionMoved', handleChange);
+        diagram.removeDiagramListener('PartResized', handleChange);
+        diagram.removeDiagramListener('TextEdited', handleChange);
       }
     };
-  }, [selectedNodeKey, onChange]);
+  }, [selectedNodeKey, handleChange]);
 
   const initDiagram = useCallback(() => {
     return new DiagramBuilder()
@@ -52,7 +54,7 @@ const Diagram: FC<proptypes> = ({
       .buildLinkTemplate()
       .generateDiagram();
   }, []);
-  
+
   return (
     <ReactDiagram
       ref={diagramRef}
@@ -60,7 +62,7 @@ const Diagram: FC<proptypes> = ({
       divClassName="w-full h-full"
       nodeDataArray={nodes}
       linkDataArray={links}
-      onModelChange={onChange}
+      onModelChange={handleChange}
     />
   );
 };

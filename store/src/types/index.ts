@@ -10,3 +10,10 @@ export type Link = {
   text: string;
   fontSize: number;
 };
+
+export type DiagramState = {
+  nodes: Node[];
+  links: Link[];
+  selectedNodeKey: string | null;
+  loading: boolean;
+};

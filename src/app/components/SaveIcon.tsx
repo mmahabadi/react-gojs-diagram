@@ -1,9 +1,9 @@
+import { selectLoading, useAppSelector } from '@store';
 import { SpinnerIcon, SuccessIcon } from '@ui-kit';
 import React from 'react';
 
-const SaveIcon: React.FC<{
-  isSaving: boolean;
-}> = ({ isSaving }) => {
+const SaveIcon: React.FC = () => {
+  const isSaving = useAppSelector(selectLoading);
   const content = isSaving ? (
     <>
       <SpinnerIcon /> <span className="ml-2">Saving...</span>

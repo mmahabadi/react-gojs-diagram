@@ -1,6 +1,6 @@
 import { FC, useRef, useState } from 'react';
 import { useClickedOutsideElement } from '../../hooks/useClickedOutsideElement';
-import { SearchInput } from '../searchInput';
+import { SearchInput } from '../SearchInput';
 import { SearchableDropDownList } from './SearchableDropDownList';
 import styles from './SearchableDropdown.module.css';
 import { DropdownItem } from './types';

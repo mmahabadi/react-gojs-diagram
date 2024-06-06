@@ -1,14 +1,19 @@
 import React from 'react';
-import { Node } from '../types';
 import { SearchableDropdown } from '@ui-kit';
+import { selectNodes, useAppSelector, Node, useAppDispatch, selectNode } from '@store';
 
-interface NodeDropdownProps {
-  nodes: Node[];
-  onSelectNode: (nodeKey: string) => void;
-}
 
-const NodeDropdown: React.FC<NodeDropdownProps> = ({ nodes, onSelectNode }) => {
-  const options = nodes.map((node) => ({ text: node.text, value: node.key }));
+const NodeDropdown: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const nodes = useAppSelector(selectNodes);
+  const options = nodes.map((node: Node) => ({
+    text: node.text,
+    value: node.key,
+  }));
+
+  const onSelectNode = (nodeKey: string) => {
+    dispatch(selectNode(nodeKey))
+  }
   return (
     <SearchableDropdown
       options={options}

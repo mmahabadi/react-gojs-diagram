@@ -1,5 +1,9 @@
 import { useCallback, useRef, useState } from 'react';
 
+/**
+ * @deprecated use dispatch(saveChanges()) instead
+ * @param delay
+ */
 export const useDebaouncedSave = (delay: number) => {
   const [loading, setLoading] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);

@@ -1,14 +1,20 @@
 import { useEffect, useState } from 'react';
-import { Node, Link } from '../types';
+import { Link, Node } from '@store';
 
+/**
+ * @deprecated use dispatch(fetchData()) instead
+ * @param nodeCount
+ * @param linkCount
+ * @returns nodes and links
+ */
 export const useMockData = (nodeCount: number, linkCount: number) => {
   const [nodes, setNodes] = useState<Node[]>([]);
   const [links, setLinks] = useState<Link[]>([]);
 
   useEffect(() => {
     const MaxPossibleNumberForColors = 256 * 256 * 256; //#FFFFFF
-    const MaxNodes = nodeCount; 
-    const MaxLinks = linkCount; 
+    const MaxNodes = nodeCount;
+    const MaxLinks = linkCount;
 
     console.log('Generating mock data');
 
