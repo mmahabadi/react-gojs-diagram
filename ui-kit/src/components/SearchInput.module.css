@@ -1,0 +1,11 @@
+.searchBtn{
+    @apply w-16 flex h-12 rounded bg-emerald-500 hover:bg-emerald-600 text-white justify-center items-center;
+}
+.searchInput{
+    @apply font-medium text-sm w-11/12 h-12 bg-transparent border-none px-2 text-gray-800;
+}
+
+.loading {
+    @apply absolute right-2 top-2;
+}
+

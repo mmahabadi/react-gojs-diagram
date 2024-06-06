@@ -1,0 +1,9 @@
+.main{
+    @apply w-full h-full;
+}
+.header{
+    @apply fixed top-0 left-0 bg-white border-gray-300 flex justify-around items-center h-24 p-6 z-10 w-full
+}
+.content{
+    @apply pt-24 w-full h-full
+}
