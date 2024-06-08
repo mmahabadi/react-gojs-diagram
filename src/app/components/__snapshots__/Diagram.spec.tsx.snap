@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Diagram renders the Diagram component and matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    divclassname="w-full h-full"
+  >
+    Diagram placeholder
+  </div>
+</DocumentFragment>
+`;

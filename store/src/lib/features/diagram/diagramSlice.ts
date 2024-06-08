@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { DiagramState } from '../../../types';
 import { fetchData, saveChanges } from './diagramThunk';
 
-const initialState: DiagramState = {
+export const initialState: DiagramState = {
   nodes: [],
   links: [],
   selectedNodeKey: null,

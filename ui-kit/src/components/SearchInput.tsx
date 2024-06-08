@@ -30,6 +30,7 @@ export const SearchInput: FC<proptypes> = ({
         </div>
       )}
       <input
+        data-testid="search-input"
         value={value}
         onKeyDown={handleSearch}
         onChange={handleSearch as ReactEventHandler<HTMLInputElement>}

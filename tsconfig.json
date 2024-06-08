@@ -5,10 +5,12 @@
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
     "strict": true,
-    "types": ["vite/client", "vitest"]
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
   },
   "files": [],
-  "include": [],
+  "include": ["global.d.ts"],
   "references": [
     {
       "path": "./tsconfig.app.json"

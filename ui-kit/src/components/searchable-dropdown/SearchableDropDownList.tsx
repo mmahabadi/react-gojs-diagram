@@ -36,6 +36,7 @@ export const SearchableDropDownList: FC<proptypes> = ({
       <ul
         style={{ height: itemsCount * itemHeight }}
         className={styles.dropdownList}
+        data-testid="dropdown-list"
       >
         {visibleOptions?.map((item, index) => (
           <li
@@ -48,6 +49,7 @@ export const SearchableDropDownList: FC<proptypes> = ({
               position: 'absolute',
               width: '100%',
             }}
+            data-testid="dropdown-item"
           >
             {item.text}
           </li>

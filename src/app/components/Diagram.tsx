@@ -66,4 +66,4 @@ const Diagram: FC = () => {
     />
   );
 };
-export default React.memo(Diagram);
+export default Diagram;

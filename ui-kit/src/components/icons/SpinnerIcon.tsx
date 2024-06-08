@@ -1,6 +1,6 @@
 export const SpinnerIcon = () => {
   return (
-    <div role="status">
+    <div data-testid="spinner-icon">
       <svg
         aria-hidden="true"
         className="w-8 h-8 text-gray-200 animate-spin fill-emerald-500"

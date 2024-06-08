@@ -1,6 +1,9 @@
 export const SuccessIcon = () => {
   return (
-    <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg">
+    <div
+      data-testid="success-icon"
+      className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg"
+    >
       <svg
         className="w-5 h-5"
         aria-hidden="true"
